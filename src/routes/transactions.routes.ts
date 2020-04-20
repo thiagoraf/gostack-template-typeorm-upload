@@ -52,14 +52,23 @@ transactionsRouter.post(
       request.file.path,
     );
 
-    transactions.map(async transaction => {
+    for (const i in transactions) {
+      const createTransactionService = new CreateTransactionService();
+      await createTransactionService.execute({
+        ...transactions[i],
+        categoryName: transactions[i].category,
+      });
+    }
+
+    /* transactions.map(async transaction => {
+      console.log(transaction);
       const createTransactionService = new CreateTransactionService();
       const result = await createTransactionService.execute({
         ...transaction,
         categoryName: transaction.category,
       });
       return result;
-    });
+    }); */
 
     return response.json({ ok: true });
   },
