@@ -60,8 +60,7 @@ transactionsRouter.post(
       });
     }
 
-    /* transactions.map(async transaction => {
-      console.log(transaction);
+    /* transactions.forEach(async transaction => {
       const createTransactionService = new CreateTransactionService();
       const result = await createTransactionService.execute({
         ...transaction,
